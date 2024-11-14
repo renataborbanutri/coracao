@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Avaliação de Risco Cardíaco</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.png" type="image/png">
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -12,6 +16,11 @@
     h1 {
       text-align: center;
       color: #333;
+    }
+    .logo {
+      display: block;
+      max-width: 200px;
+      margin: 0 auto 20px auto;
     }
     .container {
       max-width: 500px;
@@ -57,9 +66,26 @@
     .high {
       background-color: red;
     }
+    .links {
+      text-align: center;
+      margin-top: 30px;
+    }
+    .links a {
+      display: inline-block;
+      margin: 5px;
+      text-decoration: none;
+      color: #007BFF;
+      font-size: 16px;
+    }
+    .links a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
+
+  <!-- Logo -->
+  <img src="logo.png" alt="Logo" class="logo">
 
   <h1>Avaliação de Risco Cardíaco</h1>
   <div class="container">
@@ -80,12 +106,17 @@
     <div class="result" id="result"></div>
   </div>
 
+  <div class="links">
+    <a href="https://www.instagram.com/nutricionistanoseua/" target="_blank">Instagram: @nutricionistanoseua</a>
+    <a href="https://maismaravilhosa.com/" target="_blank">Site: +Maravilhosa</a>
+  </div>
+
   <script>
     function calcularRisco() {
       const triglicerideos = parseFloat(document.getElementById('triglicerideos').value);
-      const hdl = parseFloat(document.getElementById('hdl').value);
       const colesterol_total = parseFloat(document.getElementById('colesterol_total').value);
       const ldl = parseFloat(document.getElementById('ldl').value);
+      const hdl = parseFloat(document.getElementById('hdl').value);
 
       if (isNaN(triglicerideos) || isNaN(hdl) || isNaN(colesterol_total) || isNaN(ldl)) {
         document.getElementById('result').innerHTML = "<strong>Por favor, insira todos os valores!</strong>";
