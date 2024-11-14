@@ -41,6 +41,22 @@
       border: 1px solid #ddd;
       background-color: #f9f9f9;
     }
+    .risk-circle {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      margin-left: 10px;
+    }
+    .low {
+      background-color: green;
+    }
+    .medium {
+      background-color: yellow;
+    }
+    .high {
+      background-color: red;
+    }
   </style>
 </head>
 <body>
@@ -80,16 +96,26 @@
       const ratioColHdl = (colesterol_total / hdl).toFixed(2);
       const ratioLdlHdl = (ldl / hdl).toFixed(2);
 
-      const riscoTrigHdl = ratioTrigHdl < 2.5 ? "Risco cardíaco baixo" : (ratioTrigHdl <= 5 ? "Risco médio" : "Risco alto");
-      const riscoColHdl = ratioColHdl < 3.3 ? "Risco cardíaco baixo" : (ratioColHdl <= 5 ? "Risco médio" : "Risco alto");
-      const riscoLdlHdl = ratioLdlHdl < 2.3 ? "Risco cardíaco baixo" : (ratioLdlHdl <= 3.5 ? "Risco médio" : "Risco alto");
+      const riscoTrigHdl = getRiskLevel(ratioTrigHdl, 2.5, 5);
+      const riscoColHdl = getRiskLevel(ratioColHdl, 3.3, 5);
+      const riscoLdlHdl = getRiskLevel(ratioLdlHdl, 2.3, 3.5);
 
       document.getElementById('result').innerHTML = `
         <h3>Resultados:</h3>
-        <p><strong>Triglicerídeos / HDL:</strong> ${ratioTrigHdl} (${riscoTrigHdl})</p>
-        <p><strong>Colesterol Total / HDL:</strong> ${ratioColHdl} (${riscoColHdl})</p>
-        <p><strong>LDL / HDL:</strong> ${ratioLdlHdl} (${riscoLdlHdl})</p>
+        <p><strong>Triglicerídeos / HDL:</strong> ${ratioTrigHdl} ${riscoTrigHdl}</p>
+        <p><strong>Colesterol Total / HDL:</strong> ${ratioColHdl} ${riscoColHdl}</p>
+        <p><strong>LDL / HDL:</strong> ${ratioLdlHdl} ${riscoLdlHdl}</p>
       `;
+    }
+
+    function getRiskLevel(ratio, lowLimit, highLimit) {
+      if (ratio < lowLimit) {
+        return `<span>Risco cardíaco baixo</span><span class="risk-circle low"></span>`;
+      } else if (ratio <= highLimit) {
+        return `<span>Risco médio</span><span class="risk-circle medium"></span>`;
+      } else {
+        return `<span>Risco alto</span><span class="risk-circle high"></span>`;
+      }
     }
   </script>
 
