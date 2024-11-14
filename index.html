@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Avaliação de Risco Cardíaco</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      box-sizing: border-box;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Avaliação de Risco Cardíaco</h1>
+  <div class="container">
+    <label for="triglicerideos">Triglicerídeos:</label>
+    <input type="number" id="triglicerideos" placeholder="Insira o valor de triglicerídeos">
+
+    <label for="hdl">HDL:</label>
+    <input type="number" id="hdl" placeholder="Insira o valor de HDL">
+
+    <label for="colesterol_total">Colesterol Total:</label>
+    <input type="number" id="colesterol_total" placeholder="Insira o valor de colesterol total">
+
+    <label for="ldl">LDL:</label>
+    <input type="number" id="ldl" placeholder="Insira o valor de LDL">
+
+    <button onclick="calcularRisco()">Calcular Risco</button>
+
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    function calcularRisco() {
+      const triglicerideos = parseFloat(document.getElementById('triglicerideos').value);
+      const hdl = parseFloat(document.getElementById('hdl').value);
+      const colesterol_total = parseFloat(document.getElementById('colesterol_total').value);
+      const ldl = parseFloat(document.getElementById('ldl').value);
+
+      if (isNaN(triglicerideos) || isNaN(hdl) || isNaN(colesterol_total) || isNaN(ldl)) {
+        document.getElementById('result').innerHTML = "<strong>Por favor, insira todos os valores!</strong>";
+        return;
+      }
+
+      const ratioTrigHdl = (triglicerideos / hdl).toFixed(2);
+      const ratioColHdl = (colesterol_total / hdl).toFixed(2);
+      const ratioLdlHdl = (ldl / hdl).toFixed(2);
+
+      const riscoTrigHdl = ratioTrigHdl < 2.5 ? "Risco cardíaco baixo" : (ratioTrigHdl <= 5 ? "Risco médio" : "Risco alto");
+      const riscoColHdl = ratioColHdl < 3.3 ? "Risco cardíaco baixo" : (ratioColHdl <= 5 ? "Risco médio" : "Risco alto");
+      const riscoLdlHdl = ratioLdlHdl < 2.3 ? "Risco cardíaco baixo" : (ratioLdlHdl <= 3.5 ? "Risco médio" : "Risco alto");
+
+      document.getElementById('result').innerHTML = `
+        <h3>Resultados:</h3>
+        <p><strong>Triglicerídeos / HDL:</strong> ${ratioTrigHdl} (${riscoTrigHdl})</p>
+        <p><strong>Colesterol Total / HDL:</strong> ${ratioColHdl} (${riscoColHdl})</p>
+        <p><strong>LDL / HDL:</strong> ${ratioLdlHdl} (${riscoLdlHdl})</p>
+      `;
+    }
+  </script>
+
+</body>
+</html>
