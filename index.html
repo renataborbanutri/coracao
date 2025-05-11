@@ -146,9 +146,6 @@
       const ratioColHdl = (colesterol_total / hdl).toFixed(2);
       const ratioLdlHdl = (ldl / hdl).toFixed(2);
 
-      const riscoTrigHdlLabel = getRiskLabel(ratioTrigHdl, 2.5, 5);
-      const riscoColHdlLabel = getRiskLabel(ratioColHdl, 3.3, 5);
-      const riscoLdlHdlLabel = getRiskLabel(ratioLdlHdl, 2.3, 3.5);
 
       const riscoTrigHdl = getRiskLevel(ratioTrigHdl, 2.5, 5);
       const riscoColHdl = getRiskLevel(ratioColHdl, 3.3, 5);
@@ -172,23 +169,14 @@
 
     function getRiskLevel(ratio, lowLimit, highLimit) {
       if (ratio < lowLimit) {
-        return `<span>💚 Risco cardíaco baixo</span><span class='risk-circle low'></span>`;
+        return `<span> Risco cardíaco baixo 💚</span>`;
       } else if (ratio <= highLimit) {
-        return `<span>🟠 Risco médio</span><span class='risk-circle medium'></span>`;
+        return `<span> Risco cardíaco médio 🟠</span>`;
       } else {
-        return `<span>🔴 Risco alto</span><span class='risk-circle high'></span>`;
+        return `<span> Risco cardíaco alto 🔴</span>`;
       }
     }
 
-    function getRiskLabel(ratio, lowLimit, highLimit) {
-      if (ratio < lowLimit) {
-        return "💚 Risco baixo";
-      } else if (ratio <= highLimit) {
-        return "🟠 Risco médio";
-      } else {
-        return "🔴 Risco alto";
-      }
-    }
   </script>
 
 </body>
