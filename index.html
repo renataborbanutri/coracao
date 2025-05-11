@@ -146,11 +146,9 @@
 
     <div class="result" id="result"></div>
     <div class="whatsapp-share" id="whatsapp-share"></div>
-  </div>
-
-  <div class="links">
-    <a href="https://www.instagram.com/nutricionistanoseua/" target="_blank">Instagram: @nutricionistanoseua</a>
-    <a href="https://maismaravilhosa.com/" target="_blank">Site: +Maravilhosa</a>
+    <div class="links" id="site-link" style="display: none;">
+      <a href="https://maismaravilhosa.com/" target="_blank" rel="noopener noreferrer">Conheça o +Maravilhosa</a>
+    </div>
   </div>
 
   <script>
@@ -163,6 +161,7 @@
       if (isNaN(triglicerideos) || isNaN(hdl) || isNaN(colesterol_total) || isNaN(ldl) || hdl === 0) {
         document.getElementById('result').innerHTML = "<strong>Por favor, insira todos os valores corretamente!</strong>";
         document.getElementById('whatsapp-share').innerHTML = "";
+        document.getElementById('site-link').style.display = "none";
         return;
       }
 
@@ -191,6 +190,7 @@
       const shareLink = `https://wa.me/16153304647?text=${encoded}`;
 
       document.getElementById('whatsapp-share').innerHTML = `<a href="${shareLink}" target="_blank">💬 Me chama no WhatsApp, vou te explicar tudo</a>`;
+      document.getElementById('site-link').style.display = "block";
     }
 
     function getRiskLevel(ratio, lowLimit, highLimit) {
