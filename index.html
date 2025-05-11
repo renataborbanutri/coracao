@@ -99,32 +99,9 @@
     .whatsapp-share a:hover {
       background-color: #1ebe5d;
     }
-    .whatsapp-float {
-      position: fixed;
-      width: 60px;
-      height: 60px;
-      bottom: 20px;
-      right: 20px;
-      background-color: #25D366;
-      color: #fff;
-      border-radius: 50px;
-      text-align: center;
-      font-size: 30px;
-      box-shadow: 2px 2px 3px #999;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-    }
-    .whatsapp-float:hover {
-      background-color: #1ebe5d;
-    }
   </style>
 </head>
 <body>
-
-  <a href="https://wa.me/16153304647" class="whatsapp-float" target="_blank">💬</a>
 
   <img src="logo.png" alt="Logo" class="logo">
 
@@ -189,27 +166,27 @@
       const encoded = encodeURIComponent(textToShare);
       const shareLink = `https://wa.me/16153304647?text=${encoded}`;
 
-      document.getElementById('whatsapp-share').innerHTML = `<a href="${shareLink}" target="_blank">💬 Clica aqui e me chama no WhatsApp, vou te explicar tudo</a>`;
+      document.getElementById('whatsapp-share').innerHTML = `<a href="${shareLink}" target="_blank">💌 Fiquei aqui pra te ajudar. Vamos conversar no WhatsApp?</a>`;
       document.getElementById('site-link').style.display = "block";
     }
 
     function getRiskLevel(ratio, lowLimit, highLimit) {
       if (ratio < lowLimit) {
-        return `<span>Risco cardíaco baixo</span><span class='risk-circle low'></span>`;
+        return `<span>💚 Risco cardíaco baixo</span><span class='risk-circle low'></span>`;
       } else if (ratio <= highLimit) {
-        return `<span>Risco médio</span><span class='risk-circle medium'></span>`;
+        return `<span>🟠 Risco médio</span><span class='risk-circle medium'></span>`;
       } else {
-        return `<span>Risco alto</span><span class='risk-circle high'></span>`;
+        return `<span>🔴 Risco alto</span><span class='risk-circle high'></span>`;
       }
     }
 
     function getRiskLabel(ratio, lowLimit, highLimit) {
       if (ratio < lowLimit) {
-        return "Risco baixo";
+        return "💚 Risco baixo";
       } else if (ratio <= highLimit) {
-        return "Risco médio";
+        return "🟠 Risco médio";
       } else {
-        return "Risco alto";
+        return "🔴 Risco alto";
       }
     }
   </script>
