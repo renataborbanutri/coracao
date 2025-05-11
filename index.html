@@ -182,14 +182,14 @@
         <p><strong>Triglicerídeos / HDL:</strong> ${ratioTrigHdl} ${riscoTrigHdl}</p>
         <p><strong>Colesterol Total / HDL:</strong> ${ratioColHdl} ${riscoColHdl}</p>
         <p><strong>LDL / HDL:</strong> ${ratioLdlHdl} ${riscoLdlHdl}</p>
-        <p><strong>Não ignore os sinais que seu corpo está te dando. Fale comigo e entenda melhor seus resultados 💖</strong></p>
+        <p><strong>Não ignore os sinais que seu corpo está te dando. Fale comigo e entenda melhor seus resultados</strong></p>
       `;
 
       const textToShare = `Meus resultados de risco cardíaco:\n\nTriglicerídeos / HDL: ${ratioTrigHdl} (${riscoTrigHdlLabel})\nColesterol Total / HDL: ${ratioColHdl} (${riscoColHdlLabel})\nLDL / HDL: ${ratioLdlHdl} (${riscoLdlHdlLabel})\n\nGostaria de conversar sobre isso.`;
       const encoded = encodeURIComponent(textToShare);
       const shareLink = `https://wa.me/16153304647?text=${encoded}`;
 
-      document.getElementById('whatsapp-share').innerHTML = `<a href="${shareLink}" target="_blank">💬 Me chama no WhatsApp, vou te explicar tudo</a>`;
+      document.getElementById('whatsapp-share').innerHTML = `<a href="${shareLink}" target="_blank">💬 Clica aqui e me chama no WhatsApp, vou te explicar tudo</a>`;
       document.getElementById('site-link').style.display = "block";
     }
 
