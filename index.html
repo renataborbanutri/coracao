@@ -159,6 +159,20 @@
         <p><strong>Não ignore os sinais que seu corpo está te dando. Fale comigo e entenda melhor seus resultados</strong></p>
       `;
 
+const riscoTrigHdlLabel = getRiskLabel(ratioTrigHdl, 2.5, 5);
+const riscoColHdlLabel = getRiskLabel(ratioColHdl, 3.3, 5);
+const riscoLdlHdlLabel = getRiskLabel(ratioLdlHdl, 2.3, 3.5);
+function getRiskLabel(ratio, lowLimit, highLimit) {
+  if (ratio < lowLimit) {
+    return "Risco baixo";
+  } else if (ratio <= highLimit) {
+    return "Risco médio";
+  } else {
+    return "Risco alto";
+  }
+}
+
+
       const textToShare = `Meus resultados de risco cardíaco:\n\nTriglicerídeos / HDL: ${ratioTrigHdl} (${riscoTrigHdlLabel})\nColesterol Total / HDL: ${ratioColHdl} (${riscoColHdlLabel})\nLDL / HDL: ${ratioLdlHdl} (${riscoLdlHdlLabel})\n\nGostaria de conversar sobre isso.`;
       const encoded = encodeURIComponent(textToShare);
       const shareLink = `https://wa.me/16153304647?text=${encoded}`;
