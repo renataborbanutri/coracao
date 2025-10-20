@@ -73,15 +73,21 @@
       margin-top: 30px;
     }
     .links a {
-      display: inline-block;
-      margin: 5px;
-      text-decoration: none;
-      color: #007BFF;
-      font-size: 16px;
-    }
-    .links a:hover {
-      text-decoration: underline;
-    }
+  display: inline-block;
+  background-color: #ff4b91;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.links a:hover {
+  background-color: #e13c7f;
+  transform: scale(1.05);
+}
     .whatsapp-share {
       display: block;
       margin-top: 20px;
@@ -124,7 +130,7 @@
     <div class="result" id="result"></div>
     <div class="whatsapp-share" id="whatsapp-share"></div>
     <div class="links" id="site-link" style="display: none;">
-      <a href="https://maismaravilhosa.com/" target="_blank" rel="noopener noreferrer">Conheça o +Maravilhosa</a>
+      <a href="https://renataborbanutri.github.io/blackmaravilhosas/" target="_blank" rel="noopener noreferrer">Garanta sua vaga na black das Maravilhosas/a>
     </div>
   </div>
 
@@ -177,7 +183,7 @@ function getRiskLabel(ratio, lowLimit, highLimit) {
       const encoded = encodeURIComponent(textToShare);
       const shareLink = `https://wa.me/16153304647?text=${encoded}`;
 
-      document.getElementById('whatsapp-share').innerHTML = `<a href="${shareLink}" target="_blank">💬 Clique aqui e me chama no WhatsApp, vou te explicar tudo</a>`;
+ //     document.getElementById('whatsapp-share').innerHTML = `<a href="${shareLink}" target="_blank">💬 Clique aqui e me chama no WhatsApp, vou te explicar tudo</a>`;
       document.getElementById('site-link').style.display = "block";
     }
 
